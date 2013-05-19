@@ -45,7 +45,7 @@ mkExp :: Int -> Tree
 mkExp = (`evalState` (0 :: Int)) . loop
   where
     next = get <* modify (+1)
-    loop 0 = (\c -> Pred $ "x" ++ show c) <$> next
+    loop 0 = (\c -> Pred $ 'x' : show c) <$> next
     loop n =
       let op | even n = And
              | otherwise = Or
